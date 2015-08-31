@@ -1,4 +1,5 @@
 require 'vagrant'
+require_relative 'action'
 
 module VagrantPlugins
   module DnsUpdater
@@ -24,15 +25,13 @@ module VagrantPlugins
       end
 
       %w{up provision}.each do |action|
-        action_hook(:set_dns_record, "machine_action_#{action}".to_sym) do |hook|
-          require_relative 'action/set_dynhost'
-          hook.append VagrantPlugins::DnsUpdater::Action::SetDynHost
+        action_hook(:dnsupdater, "machine_action_#{action}".to_sym) do |hook|
+          hook.append(Action.set_dns_record)
         end
       end
 
-      action_hook(:remove_dns_record, "machine_action_destroy".to_sym) do |hook|
-        require_relative 'action/unset_dynhost'
-        hook.append VagrantPlugins::DnsUpdater::Action::UnsetDynHost
+      action_hook(:dnsupdater, "machine_action_destroy".to_sym) do |hook|
+        hook.prepend(Action.remove_dns_record)
       end
 
     end
