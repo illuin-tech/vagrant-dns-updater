@@ -16,6 +16,7 @@ module VagrantPlugins
           registrar = Registrar::Ovh.new(config)
           @machine.communicate.execute("ip addr show #{interface} | awk '/inet/ && /#{interface}/{sub(/\\/.*$/,\"\",$2); print $2}'") do |type, output|
             ip = output
+            @machine.ui.info("Pointing #{config.subdomain}.#{config.zone} to #{ip}")
             registrar.set_dns_record(ip)
           end
         end
