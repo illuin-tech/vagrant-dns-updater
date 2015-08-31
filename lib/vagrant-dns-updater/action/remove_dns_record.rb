@@ -14,7 +14,6 @@ module VagrantPlugins
           config = @machine.config.dnsupdater
           registrar = Registrar::Ovh.new(config)
           registrar.remove_dns_record
-          end
         end
 
       end
