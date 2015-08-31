@@ -31,7 +31,7 @@ module VagrantPlugins
       end
 
       action_hook(:dnsupdater, "machine_action_destroy".to_sym) do |hook|
-        hook.prepend(Action.remove_dns_record)
+        hook.append(Action.remove_dns_record)
       end
 
     end
