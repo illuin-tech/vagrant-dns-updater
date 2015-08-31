@@ -33,6 +33,11 @@ module VagrantPlugins
           @api.post("/domain/zone/#{@zone}/refresh")
         end
 
+        def remove_dns_record
+          record_id = self.get_record_id
+          @api.delete("/domain/zone/#{@zone}/record/#{record_id}") if !record_id.nil?
+        end
+
 
         private
 
