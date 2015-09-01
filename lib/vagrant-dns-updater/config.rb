@@ -32,11 +32,21 @@ module VagrantPlugins
         @zone = nil if @zone == UNSET_VALUE
         @subdomain = nil if @subdomain == UNSET_VALUE
         @interface = 'eth0' if @interface == UNSET_VALUE
-        @ttl = 600 if @ttl == UNSET_VALUE
+        @ttl = 60 if @ttl == UNSET_VALUE
       end
 
       def validate(machine)
         finalize!
+        errors = []
+        errors << 'provider parameter is required' if @provider.nil?
+        errors << 'appkey parameter is required' if @appkey.nil? && @provider == 'ovh'
+        errors << 'appsecret parameter is required' if @appsecret.nil? && @provider == 'ovh'
+        errors << 'consumerkey parameter is required' if @consumerkey.nil? && @provider == 'ovh'
+        errors << 'zone parameter is required' if @zone.nil?
+        errors << 'subdomain parameter is required' if @subdomain.nil?
+        errors << 'interface parameter is required' if @interface.nil?
+
+        { "DnsUpdater" => errors }
       end
     end
 
