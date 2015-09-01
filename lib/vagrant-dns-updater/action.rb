@@ -8,12 +8,14 @@ module VagrantPlugins
 
       def self.set_dns_record
         Vagrant::Action::Builder.new.tap do |builder|
+          builder.use ConfigValidate
           builder.use SetDnsRecord
         end
       end
 
-      def self.remote_dns_record
+      def self.remove_dns_record
         Vagrant::Action::Builder.new.tap do |builder|
+          builder.use ConfigValidate
           builder.use RemoveDnsRecord
         end
       end
