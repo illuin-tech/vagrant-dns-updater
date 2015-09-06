@@ -13,26 +13,34 @@ module VagrantPlugins
         end
 
         def set_dns_record(ip)
-          record_id = get_record_id
-          if record_id.nil?
-            @api.post("/domain/zone/#{@zone}/record", {
-                      'fieldType' => 'A',
-                      'target' => ip,
-                      'subDomain' => @subdomain,
-                      'ttl' => @ttl})
-          else
-            @api.put("/domain/zone/#{@zone}/record/#{record_id}", {
-                     'target' => ip,
-                     'subDomain' => @subdomain,
-                     'ttl' => @ttl})
-          end
+          begin
+            record_id = get_record_id
+            if record_id.nil?
+              @api.post("/domain/zone/#{@zone}/record", {
+                        'fieldType' => 'A',
+                        'target' => ip,
+                        'subDomain' => @subdomain,
+                        'ttl' => @ttl})
+            else
+              @api.put("/domain/zone/#{@zone}/record/#{record_id}", {
+                       'target' => ip,
+                       'subDomain' => @subdomain,
+                       'ttl' => @ttl})
+            end
 
-          @api.post("/domain/zone/#{@zone}/refresh")
+            @api.post("/domain/zone/#{@zone}/refresh")
+          rescue OVH::RESTError => error
+            raise Vagrant::Errors::VagrantError.new, error
+          end
         end
 
         def remove_dns_record
-          record_id = get_record_id
-          @api.delete("/domain/zone/#{@zone}/record/#{record_id}") if !record_id.nil?
+          begin
+            record_id = get_record_id
+            @api.delete("/domain/zone/#{@zone}/record/#{record_id}") if !record_id.nil?
+          rescue OVH::RESTError => error
+            raise Vagrant::Errors::VagrantError.new, error
+          end
         end
 
 
