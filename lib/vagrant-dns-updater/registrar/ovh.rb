@@ -37,7 +37,7 @@ module VagrantPlugins
         def remove_dns_record
           begin
             record_id = get_record_id
-            @api.delete("/domain/zone/#{@zone}/record/#{record_id}") if !record_id.nil?
+            @api.delete("/domain/zone/#{@zone}/record/#{record_id}") unless record_id.nil?
           rescue OVH::RESTError => error
             raise Vagrant::Errors::VagrantError.new, error
           end
