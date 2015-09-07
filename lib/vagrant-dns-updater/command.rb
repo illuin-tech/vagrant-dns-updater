@@ -20,7 +20,14 @@ module VagrantPlugins
 
         argv = parse_args
 
-        puts OVH::REST.generate_consumer_key(argv, access)
+        result = OVH::REST.generate_consumer_key(argv, access)
+
+        raise Vagrant::Errors::VagrantError.new, result['message'] if result['message'] == 'Invalid application key'
+
+        puts <<-EOF
+        Validation URL : #{result['validationUrl']}
+        Consumer Key : #{result['consumerKey']}
+        EOF
 
       end
 
