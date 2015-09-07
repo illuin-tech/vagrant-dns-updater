@@ -31,7 +31,7 @@ module VagrantPlugins
         @consumerkey = nil if @consumerkey == UNSET_VALUE
         @zone = nil if @zone == UNSET_VALUE
         @subdomain = nil if @subdomain == UNSET_VALUE
-        @interface = 'eth0' if @interface == UNSET_VALUE
+        @interface = nil if @interface == UNSET_VALUE
         @ttl = 60 if @ttl == UNSET_VALUE
       end
 
