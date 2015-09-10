@@ -12,7 +12,29 @@
 
 ## Usage
 
-TODO: Write usage instructions here
+Configuration example for OVH :
+
+```ruby
+Vagrant.configure(2) do |config|
+    # for the moment only "ovh" is supported
+    config.dnsupdater.provider = "ovh"
+
+    # API credentials, specific to OVH
+    config.dnsupdater.appkey = "XXXXXXXX"
+    config.dnsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
+    config.dnsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
+
+    # domain settings, test.mydomain.com in our example
+    config.dnsupdater.zone = "mydomain.com"
+    config.dnsupdater.subdomain = "test"
+
+    # the network interface on which retreive the ip
+    config.dnsupdater.interface = "eth2"
+
+    # ttl is optional, default value is set to 60 seconds
+    config.dnsupdater.ttl = "120"
+end
+```
 
 ## ToDo
 
