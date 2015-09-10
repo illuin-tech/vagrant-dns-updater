@@ -20,6 +20,7 @@ Vagrant.configure(2) do |config|
     config.dnsupdater.provider = "ovh"
 
     # API credentials, specific to OVH
+    # for more information read the OVH section below
     config.dnsupdater.appkey = "XXXXXXXX"
     config.dnsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
     config.dnsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
@@ -35,6 +36,11 @@ Vagrant.configure(2) do |config|
     config.dnsupdater.ttl = "120"
 end
 ```
+
+## Registrars
+### OVH
+
+ToDo...
 
 ## ToDo
 
