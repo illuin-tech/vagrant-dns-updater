@@ -1,5 +1,6 @@
 require 'vagrant'
 require_relative 'action'
+require_relative 'registrar'
 
 module VagrantPlugins
   module DnsUpdater
@@ -25,13 +26,13 @@ module VagrantPlugins
       end
 
       %w{up provision}.each do |action|
-        action_hook(:dnsupdater, "machine_action_#{action}".to_sym) do |hook|
-          hook.append(Action.set_dns_record)
+        action_hook :dnsupdater, "machine_action_#{action}".to_sym do |hook|
+          hook.append Action.set_dns_record
         end
       end
 
-      action_hook(:dnsupdater, "machine_action_destroy".to_sym) do |hook|
-        hook.append(Action.remove_dns_record)
+      action_hook :dnsupdater, "machine_action_destroy".to_sym do |hook|
+        hook.append Action.remove_dns_record
       end
 
     end

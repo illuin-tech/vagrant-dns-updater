@@ -1,5 +1,3 @@
-require_relative '../registrar/ovh'
-
 module VagrantPlugins
   module DnsUpdater
     module Action
@@ -12,7 +10,7 @@ module VagrantPlugins
 
         def call(env)
           config = @machine.config.dnsupdater
-          registrar = Registrar::Ovh.new(config)
+          registrar = Registrar::Registrar.load config
           registrar.remove_dns_record
         end
 
