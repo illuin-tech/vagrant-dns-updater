@@ -17,7 +17,7 @@ Configuration example for OVH :
 ```ruby
 Vagrant.configure(2) do |config|
     # for the moment only "ovh" is supported
-    config.dnsupdater.provider = "ovh"
+    config.dnsupdater.registrar = "ovh"
 
     # API credentials, specific to OVH
     # for more information read the OVH section below
