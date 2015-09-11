@@ -3,13 +3,15 @@ require 'ovh/rest'
 module VagrantPlugins
   module DnsUpdater
     module Registrar
-      class Ovh
+      class Ovh < Registrar
+
+        register_registrar 'ovh'
 
         def initialize(config)
           @zone = config.zone
           @subdomain = config.subdomain
           @ttl = config.ttl
-          @api = OVH::REST.new(config.appkey, config.appsecret, config.consumerkey)
+          @api = OVH::REST.new config.appkey, config.appsecret, config.consumerkey
         end
 
         def set_dns_record(ip)
@@ -30,7 +32,7 @@ module VagrantPlugins
 
             @api.post("/domain/zone/#{@zone}/refresh")
           rescue OVH::RESTError => error
-            raise Vagrant::Errors::VagrantError.new, error
+            raise Vagrant::Errors::VagrantError.new, "DnsUpdater: #{error}"
           end
         end
 
@@ -39,7 +41,7 @@ module VagrantPlugins
             record_id = get_record_id
             @api.delete("/domain/zone/#{@zone}/record/#{record_id}") unless record_id.nil?
           rescue OVH::RESTError => error
-            raise Vagrant::Errors::VagrantError.new, error
+            raise Vagrant::Errors::VagrantError.new, "DnsUpdater: #{error}"
           end
         end
 

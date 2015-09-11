@@ -38,7 +38,7 @@ module VagrantPlugins
       def validate(machine)
         finalize!
         errors = []
-        errors << 'registrar parameter is required with a valid value' unless ['ovh'].include?(@registrar)
+        errors << 'registrar parameter is required with a valid value' if @registrar.nil?
         errors << 'appkey parameter is required' if @appkey.nil? && @registrar == 'ovh'
         errors << 'appsecret parameter is required' if @appsecret.nil? && @registrar == 'ovh'
         errors << 'consumerkey parameter is required' if @consumerkey.nil? && @registrar == 'ovh'
