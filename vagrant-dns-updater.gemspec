@@ -9,9 +9,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Nassim Kacha"]
   spec.email         = ["nassim.kacha@blueicefield.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.description   = 'A Vagrant plugin that allows you to automatically configure a subdomain' \
+                       ' with the ip of your vagrant instance using your registrar API.'
+  spec.summary       = spec.description
+  spec.homepage      = "https://github.com/blueicefield/vagrant-dns-updater"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
