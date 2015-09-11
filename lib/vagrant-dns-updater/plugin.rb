@@ -10,7 +10,8 @@ module VagrantPlugins
       name 'dns-updater'
 
       description <<-DESC
-        Bla bla bla.
+        This plugin allows you to automatically configure a subdomain
+        with the ip of your vagrant instance using your registrar API.
       DESC
 
 
