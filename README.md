@@ -12,7 +12,7 @@
 
 ## Usage
 
-Configuration example for OVH :
+Configuration example for OVH:
 
 ```ruby
 Vagrant.configure(2) do |config|
@@ -40,7 +40,30 @@ end
 ## Registrars
 ### OVH
 
-ToDo...
+First you need an `appkey` and an `appsecret` which can be obtained [here](https://www.ovh.com/fr/cgi-bin/api/createApplication.cgi).
+
+You will also need a `consumerkey`, you can get it using the `ovh-consumer-key` command provided by this plugin:
+
+```
+vagrant ovh-consumer-key <appkey>
+```
+
+This command will display a `consumerkey` and a `validationUrl`, the `consumerkey` need a validation before use, this
+can be done by following the `validationUrl` and entering your credentials.
+
+Finally you can add the following parameters to your Vagrantfile.
+
+```ruby
+Vagrant.configure(2) do |config|
+    config.dnsupdater.registrar = "ovh"
+    config.dnsupdater.appkey = "XXXXXXXX"
+    config.dnsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
+    config.dnsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
+    config.dnsupdater.zone = "mydomain.com"
+    config.dnsupdater.subdomain = "test"
+    config.dnsupdater.interface = "eth2"
+end
+```
 
 ## ToDo
 
