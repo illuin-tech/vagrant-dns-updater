@@ -25,8 +25,8 @@ module VagrantPlugins
         raise Vagrant::Errors::VagrantError.new, result['message'] if result['message'] == 'Invalid application key'
 
         puts <<-EOF
-        Validation URL : #{result['validationUrl']}
-        Consumer Key : #{result['consumerKey']}
+        validationUrl: #{result['validationUrl']}
+        consumerkey: #{result['consumerKey']}
         EOF
 
       end
