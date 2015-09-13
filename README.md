@@ -1,6 +1,6 @@
 # vagrant-dns-updater
 
-[![Gem Version](https://badge.fury.io/rb/vagrant-dns-updater@2x.png)](http://badge.fury.io/rb/vagrant-dns-updater)
+[![Gem Version](https://badge.fury.io/rb/vagrant-dns-updater.svg)](http://badge.fury.io/rb/vagrant-dns-updater)
 
 ## Introduction
 
