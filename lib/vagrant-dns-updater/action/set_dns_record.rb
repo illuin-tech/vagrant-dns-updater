@@ -10,13 +10,15 @@ module VagrantPlugins
 
         def call(env)
           config = @machine.config.dnsupdater
-          interface = config.interface
-          registrar = Registrar::Registrar.load config
-          @machine.communicate.execute("ip addr show #{interface} | awk '/inet/ && /#{interface}/{sub(/\\/.*$/,\"\",$2); print $2}'") do |type, output|
-            raise Vagrant::Errors::VagrantError.new, output if type.to_s == 'stderr'
-            ip = output
-            @machine.ui.info("Pointing #{config.subdomain}.#{config.zone} to #{ip}")
-            registrar.set_dns_record ip
+          unless config.registrar.nil?
+            interface = config.interface
+            registrar = Registrar::Registrar.load config
+            @machine.communicate.execute("ip addr show #{interface} | awk '/inet/ && /#{interface}/{sub(/\\/.*$/,\"\",$2); print $2}'") do |type, output|
+              raise Vagrant::Errors::VagrantError.new, output if type.to_s == 'stderr'
+              ip = output
+              @machine.ui.info("Pointing #{config.subdomain}.#{config.zone} to #{ip}")
+              registrar.set_dns_record ip
+            end
           end
         end
 
