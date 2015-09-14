@@ -10,7 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["nassim.kacha@blueicefield.com"]
 
   spec.description   = 'A Vagrant plugin that allows you to automatically configure a subdomain' \
-                       ' with the ip of your vagrant instance using your registrar API.'
+                       ' with the ip of your vagrant instance using your registrar API.' \
+                       ' Only the registrar OVH is supported at the moment.'
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/blueicefield/vagrant-dns-updater"
   spec.license       = "MIT"

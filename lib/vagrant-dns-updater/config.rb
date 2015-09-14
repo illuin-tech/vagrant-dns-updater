@@ -38,13 +38,12 @@ module VagrantPlugins
       def validate(machine)
         finalize!
         errors = []
-        errors << 'registrar parameter is required with a valid value' if @registrar.nil?
         errors << 'appkey parameter is required' if @appkey.nil? && @registrar == 'ovh'
         errors << 'appsecret parameter is required' if @appsecret.nil? && @registrar == 'ovh'
         errors << 'consumerkey parameter is required' if @consumerkey.nil? && @registrar == 'ovh'
-        errors << 'zone parameter is required' if @zone.nil?
-        errors << 'subdomain parameter is required' if @subdomain.nil?
-        errors << 'interface parameter is required' if @interface.nil?
+        errors << 'zone parameter is required' if @zone.nil? && !@registrar.nil?
+        errors << 'subdomain parameter is required' if @subdomain.nil? && !@registrar.nil?
+        errors << 'interface parameter is required' if @interface.nil? && !@registrar.nil?
 
         { "DnsUpdater" => errors }
       end

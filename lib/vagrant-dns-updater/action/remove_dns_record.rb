@@ -10,8 +10,10 @@ module VagrantPlugins
 
         def call(env)
           config = @machine.config.dnsupdater
-          registrar = Registrar::Registrar.load config
-          registrar.remove_dns_record
+          unless config.registrar.nil?
+            registrar = Registrar::Registrar.load config
+            registrar.remove_dns_record
+          end
         end
 
       end
