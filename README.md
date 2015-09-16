@@ -2,6 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/vagrant-dns-updater.svg)](http://badge.fury.io/rb/vagrant-dns-updater)
 [![Dependency Status](https://gemnasium.com/blueicefield/vagrant-dns-updater.svg)](https://gemnasium.com/blueicefield/vagrant-dns-updater)
+[![Code Climate](https://codeclimate.com/github/blueicefield/vagrant-dns-updater/badges/gpa.svg)](https://codeclimate.com/github/blueicefield/vagrant-dns-updater)
 
 ## Introduction
 
