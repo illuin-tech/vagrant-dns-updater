@@ -1,6 +1,7 @@
 # vagrant-dns-updater
 
 [![Gem Version](https://badge.fury.io/rb/vagrant-dns-updater.svg)](http://badge.fury.io/rb/vagrant-dns-updater)
+[![Dependency Status](https://gemnasium.com/blueicefield/vagrant-dns-updater.svg)](https://gemnasium.com/blueicefield/vagrant-dns-updater)
 
 ## Introduction
 
