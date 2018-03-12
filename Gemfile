@@ -6,5 +6,4 @@ end
 
 group :plugins do
     gemspec
-    gem "vagrant-subdomains-updater", path: "."
 end

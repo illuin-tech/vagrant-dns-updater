@@ -1,7 +1,6 @@
 # vagrant-subdomains-updater
 
 [![Gem Version](https://badge.fury.io/rb/vagrant-subdomains-updater.svg)](http://badge.fury.io/rb/vagrant-subdomains-updater)
-[![Dependency Status](https://gemnasium.com/illuin-tech/vagrant-subdomains-updater.svg)](https://gemnasium.com/illuin-tech/vagrant-subdomains-updater)
 [![Code Climate](https://codeclimate.com/github/illuin-tech/vagrant-subdomains-updater/badges/gpa.svg)](https://codeclimate.com/github/illuin-tech/vagrant-subdomains-updater)
 
 ## Introduction

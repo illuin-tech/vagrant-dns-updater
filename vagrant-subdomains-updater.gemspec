@@ -6,14 +6,14 @@ require 'vagrant-subdomains-updater/version'
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-subdomains-updater"
   spec.version       = VagrantPlugins::SubdomainsUpdater::VERSION
-  spec.authors       = ["Nassim Kacha"]
-  spec.email         = ["nassim.kacha@blueicefield.com"]
+  spec.authors       = ["Illuin Technology"]
+  spec.email         = ["contact+rubygems@illuin.tech"]
 
   spec.description   = 'A Vagrant plugin that allows you to automatically configure subdomains' \
                        ' with the ip of your vagrant instance using your registrar API.' \
                        ' Only the registrar OVH is supported at the moment.'
   spec.summary       = spec.description
-  spec.homepage      = "https://github.com/blueicefield/vagrant-subdomains-updater"
+  spec.homepage      = "https://github.com/illuin-tech/vagrant-subdomains-updater"
   spec.license       = "MIT"
   
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
