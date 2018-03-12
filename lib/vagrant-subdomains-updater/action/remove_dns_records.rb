@@ -1,7 +1,7 @@
 module VagrantPlugins
-  module DnsUpdater
+  module SubdomainsUpdater
     module Action
-      class RemoveDnsRecord
+      class RemoveDnsRecords
 
         def initialize(app, env)
           @app = app
@@ -9,10 +9,10 @@ module VagrantPlugins
         end
 
         def call(env)
-          config = @machine.config.dnsupdater
+          config = @machine.config.subdomainsupdater
           unless config.registrar.nil?
             registrar = Registrar::Registrar.load config
-            registrar.remove_dns_record
+            registrar.remove_dns_records
           end
         end
 

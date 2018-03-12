@@ -1,5 +1,5 @@
 module VagrantPlugins
-  module DnsUpdater
+  module SubdomainsUpdater
     module Registrar
       class Registrar
 
@@ -11,7 +11,7 @@ module VagrantPlugins
             registrar.new config
           else
             raise Vagrant::Errors::VagrantError.new,
-                    "DnsUpdater: The registrar \"#{config.registrar}\" is not supported."
+                    "SubdomainsUpdater: The registrar \"#{config.registrar}\" is not supported."
           end
         end
 

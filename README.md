@@ -1,12 +1,14 @@
-# vagrant-dns-updater
+# vagrant-subdomains-updater
 
-[![Gem Version](https://badge.fury.io/rb/vagrant-dns-updater.svg)](http://badge.fury.io/rb/vagrant-dns-updater)
-[![Dependency Status](https://gemnasium.com/blueicefield/vagrant-dns-updater.svg)](https://gemnasium.com/blueicefield/vagrant-dns-updater)
-[![Code Climate](https://codeclimate.com/github/blueicefield/vagrant-dns-updater/badges/gpa.svg)](https://codeclimate.com/github/blueicefield/vagrant-dns-updater)
+[![Gem Version](https://badge.fury.io/rb/vagrant-subdomains-updater.svg)](http://badge.fury.io/rb/vagrant-subdomains-updater)
+[![Dependency Status](https://gemnasium.com/illuin-tech/vagrant-subdomains-updater.svg)](https://gemnasium.com/illuin-tech/vagrant-subdomains-updater)
+[![Code Climate](https://codeclimate.com/github/illuin-tech/vagrant-subdomains-updater/badges/gpa.svg)](https://codeclimate.com/github/illuin-tech/vagrant-subdomains-updater)
 
 ## Introduction
 
-`vagrant-dns-updater` allows you to automatically configure a subdomain with the ip of your vagrant instance using your registrar API.
+`vagrant-subdomains-updater` allows you to automatically configure subdomains with the ip of your vagrant instance using your registrar API.
+
+Difference with the [upstream](https://github.com/nasskach/vagrant-dns-updater) : `vagrant-subdomains-updater` handles multiple subdomains instead of a single one.
 
 ## Important
 - This plugin is currently only compatible with Linux guests.
@@ -14,7 +16,7 @@
 
 ## Installation
 
-    $ vagrant plugin install vagrant-dns-updater
+    $ vagrant plugin install vagrant-subdomains-updater
 
 ## Usage
 
@@ -23,23 +25,23 @@ Configuration example for OVH:
 ```ruby
 Vagrant.configure(2) do |config|
     # for the moment only "ovh" is supported
-    config.dnsupdater.registrar = "ovh"
+    config.subdomainsupdater.registrar = "ovh"
 
     # API credentials, specific to OVH
     # for more information read the OVH section below
-    config.dnsupdater.appkey = "XXXXXXXX"
-    config.dnsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
-    config.dnsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
+    config.subdomainsupdater.appkey = "XXXXXXXX"
+    config.subdomainsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
+    config.subdomainsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
 
     # domain settings, test.mydomain.com in our example
-    config.dnsupdater.zone = "mydomain.com"
-    config.dnsupdater.subdomain = "test"
+    config.subdomainsupdater.zone = "mydomain.com"
+    config.subdomainsupdater.subdomains = ["test"]
 
     # the network interface on which retreive the ip
-    config.dnsupdater.interface = "eth2"
+    config.subdomainsupdater.interface = "eth2"
 
     # ttl is optional, default value is set to 60 seconds
-    config.dnsupdater.ttl = "120"
+    config.subdomainsupdater.ttl = "120"
 end
 ```
 
@@ -61,13 +63,13 @@ Finally you can add the following parameters to your Vagrantfile.
 
 ```ruby
 Vagrant.configure(2) do |config|
-    config.dnsupdater.registrar = "ovh"
-    config.dnsupdater.appkey = "XXXXXXXX"
-    config.dnsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
-    config.dnsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
-    config.dnsupdater.zone = "mydomain.com"
-    config.dnsupdater.subdomain = "test"
-    config.dnsupdater.interface = "eth2"
+    config.subdomainsupdater.registrar = "ovh"
+    config.subdomainsupdater.appkey = "XXXXXXXX"
+    config.subdomainsupdater.appsecret = "YYYYYYYYYYYYYYYYYY"
+    config.subdomainsupdater.consumerkey = "ZZZZZZZZZZZZZZZZZZZ"
+    config.subdomainsupdater.zone = "mydomain.com"
+    config.subdomainsupdater.subdomains = ["test"]
+    config.subdomainsupdater.interface = "eth2"
 end
 ```
 
@@ -79,7 +81,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/blueicefield/vagrant-dns-updater.
+Bug reports and pull requests are welcome on GitHub at https://github.com/illuin-tech/vagrant-subdomains-updater.
 
 
 ## License

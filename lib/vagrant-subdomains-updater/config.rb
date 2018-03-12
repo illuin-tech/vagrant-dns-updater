@@ -1,14 +1,14 @@
 require 'vagrant'
 
 module VagrantPlugins
-  module DnsUpdater
+  module SubdomainsUpdater
     class Config < Vagrant.plugin(2, :config)
       attr_accessor :registrar
       attr_accessor :appkey
       attr_accessor :appsecret
       attr_accessor :consumerkey
       attr_accessor :zone
-      attr_accessor :subdomain
+      attr_accessor :subdomains
       attr_accessor :interface
       attr_accessor :ttl
 
@@ -19,7 +19,7 @@ module VagrantPlugins
         @appsecret = UNSET_VALUE
         @consumerkey = UNSET_VALUE
         @zone = UNSET_VALUE
-        @subdomain = UNSET_VALUE
+        @subdomains = UNSET_VALUE
         @interface = UNSET_VALUE
         @ttl = UNSET_VALUE
       end
@@ -30,7 +30,7 @@ module VagrantPlugins
         @appsecret = nil if @appsecret == UNSET_VALUE
         @consumerkey = nil if @consumerkey == UNSET_VALUE
         @zone = nil if @zone == UNSET_VALUE
-        @subdomain = nil if @subdomain == UNSET_VALUE
+        @subdomains = nil if @subdomains == UNSET_VALUE
         @interface = nil if @interface == UNSET_VALUE
         @ttl = 60 if @ttl == UNSET_VALUE
       end
@@ -42,10 +42,10 @@ module VagrantPlugins
         errors << 'appsecret parameter is required' if @appsecret.nil? && @registrar == 'ovh'
         errors << 'consumerkey parameter is required' if @consumerkey.nil? && @registrar == 'ovh'
         errors << 'zone parameter is required' if @zone.nil? && !@registrar.nil?
-        errors << 'subdomain parameter is required' if @subdomain.nil? && !@registrar.nil?
+        errors << 'subdomains parameter is required' if @subdomains.nil? && !@registrar.nil?
         errors << 'interface parameter is required' if @interface.nil? && !@registrar.nil?
 
-        { "DnsUpdater" => errors }
+        { "SubdomainsUpdater" => errors }
       end
     end
 

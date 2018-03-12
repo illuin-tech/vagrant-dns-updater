@@ -1,22 +1,22 @@
-require_relative 'action/set_dns_record'
-require_relative 'action/remove_dns_record'
+require_relative 'action/set_dns_records'
+require_relative 'action/remove_dns_records'
 
 module VagrantPlugins
-  module DnsUpdater
+  module SubdomainsUpdater
     module Action
       include Vagrant::Action::Builtin
 
-      def self.set_dns_record
+      def self.set_dns_records
         Vagrant::Action::Builder.new.tap do |builder|
           builder.use ConfigValidate
-          builder.use SetDnsRecord
+          builder.use SetDnsRecords
         end
       end
 
-      def self.remove_dns_record
+      def self.remove_dns_records
         Vagrant::Action::Builder.new.tap do |builder|
           builder.use ConfigValidate
-          builder.use RemoveDnsRecord
+          builder.use RemoveDnsRecords
         end
       end
     end

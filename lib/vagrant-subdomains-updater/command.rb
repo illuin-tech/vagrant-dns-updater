@@ -1,7 +1,7 @@
 require 'ovh/rest'
 
 module VagrantPlugins
-  module DnsUpdater
+  module SubdomainsUpdater
     class Command < Vagrant.plugin('2', :command)
 
       def self.synopsis
