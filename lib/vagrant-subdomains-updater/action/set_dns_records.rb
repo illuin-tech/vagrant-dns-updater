@@ -13,6 +13,13 @@ module VagrantPlugins
           unless config.registrar.nil?
             interface = config.interface
             registrar = Registrar::Registrar.load config
+            if interface.nil?
+              @machine.communicate.execute("ip addr show | grep BROADCAST |head -n 1|cut -d':' -f2") do |type, output|
+                raise Vagrant::Errors::VagrantError.new, output if type.to_s == 'stderr'
+                interface = output.strip
+                @machine.ui.warn("No interface given. Using first interface found, #{interface}")
+              end
+            end
             @machine.communicate.execute("ip addr show #{interface} | awk '/inet/ && /#{interface}/{sub(/\\/.*$/,\"\",$2); print $2}'") do |type, output|
               raise Vagrant::Errors::VagrantError.new, output if type.to_s == 'stderr'
               ip = output

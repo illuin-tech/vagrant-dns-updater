@@ -43,7 +43,6 @@ module VagrantPlugins
         errors << 'consumerkey parameter is required' if @consumerkey.nil? && @registrar == 'ovh'
         errors << 'zone parameter is required' if @zone.nil? && !@registrar.nil?
         errors << 'subdomains parameter is required' if @subdomains.nil? && !@registrar.nil?
-        errors << 'interface parameter is required' if @interface.nil? && !@registrar.nil?
 
         { "SubdomainsUpdater" => errors }
       end
