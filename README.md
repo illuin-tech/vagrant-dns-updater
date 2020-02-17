@@ -11,6 +11,7 @@ Difference with the [upstream](https://github.com/nasskach/vagrant-dns-updater) 
 
 ## Important
 - This plugin is currently only compatible with Linux guests.
+- autodetect interface if no interface specified
 - Only OVH registrar is supported for the moment.
 
 ## Installation
